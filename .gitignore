@@ -4,3 +4,6 @@
 .config/systemd/*
 .config/tmux/plugins/*
 .local/*
+!.local/bin/
+.local/bin/eww/
+.local/bin/poetry
