@@ -1,5 +1,8 @@
 .config/google-chrome/*
 .config/eww/*
+.config/pulse/*
+.config/pypoetry/*
+.config/vlc/*
 .config/Slack/*
 .config/systemd/*
 .config/tmux/plugins/*
