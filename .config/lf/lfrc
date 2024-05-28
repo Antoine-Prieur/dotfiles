@@ -1,0 +1,18 @@
+# Basic settings
+set hidden true
+set ignorecase true
+set icons true
+
+# Custom functions
+map e $nvim %f%
+
+cmd mkdir %{{
+    printf "Make directory: "
+    read ans
+    mkdir $ans
+}}
+
+# Custom mappings
+map a mkdir
+map gd cd ~/Documents/
+map gD cd ~/Downloads/

@@ -1,0 +1,6 @@
+.config/google-chrome/*
+.config/eww/*
+.config/Slack/*
+.config/systemd/*
+.config/tmux/plugins/*
+.local/*
