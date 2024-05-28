@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
 
-selected=$1
+name=$1
 
-if [[ -z $selected ]]; then
+if [[ "$name" == "matching-ms-ai" ]]; then
+	selected=/home/antoine/Documents/Alfred/microservices-ai/matching-ms-ai/
+elif [[ "$name" == "mv-ms-ai" ]]; then
+	selected=/home/antoine/Documents/Alfred/microservices-ai/mv-ms-ai/
+elif [[ "$name" == "invoice-review-ms-ai" ]]; then
+	selected=/home/antoine/Documents/Alfred/microservices-ai/invoice-review-ms-ai/
+else
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $name -c $selected
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t=$name 2> /dev/null; then
+    tmux new-session -ds $name -c $selected
 fi
 
-tmux switch-client -t $selected_name
+kitty -e tmux a -t $name
