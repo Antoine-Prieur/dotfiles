@@ -35,6 +35,7 @@ require('lsp_signature').setup()
 -- Plugins config
 require 'custom.plugins.configs.neogen'
 require 'custom.plugins.configs.telescope'
+require 'custom.plugins.configs.harpoon'
 require 'custom.plugins.configs.nvim-tree'
 require 'custom.plugins.configs.lspconfig'
 require 'custom.plugins.configs.noice'
