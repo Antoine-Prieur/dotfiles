@@ -39,6 +39,11 @@ vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diag
 -- Terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Escape terminal in terminal mode', nowait = true, silent = true })
 
+-- Quickfix list
+vim.keymap.set('n', '<leader>qn', '<Cmd>cnext<CR>', { desc = '[Q]uickfix list [n]ext', nowait = true, silent = true })
+vim.keymap.set('n', '<leader>qN', '<Cmd>cprevious<CR>', { desc = '[Q]uickfix list previous', nowait = true, silent = true })
+
+
 -- Telescope
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
