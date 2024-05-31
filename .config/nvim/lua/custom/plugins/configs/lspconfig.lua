@@ -70,7 +70,7 @@ lspconfig.pyright.setup {
     python = {
       analysis = {
         autoSearchPaths = true,
-        diagnosticMode = 'workspace',
+        --diagnosticMode = 'workspace',
         useLibraryCodeForTypes = true,
       },
     },
