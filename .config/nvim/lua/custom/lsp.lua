@@ -37,7 +37,7 @@ local on_attach = function(_, bufnr)
     stylua = {},
     mypy = {},
     isort = {},
-    -- rust_analyzer = {},
+    rust_analyzer = {},
     -- tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
