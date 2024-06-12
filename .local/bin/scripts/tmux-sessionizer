@@ -8,6 +8,10 @@ elif [[ "$name" == "mv-ms-ai" ]]; then
 	selected=/home/antoine/Documents/Alfred/microservices-ai/mv-ms-ai/
 elif [[ "$name" == "invoice-review-ms-ai" ]]; then
 	selected=/home/antoine/Documents/Alfred/microservices-ai/invoice-review-ms-ai/
+elif [[ "$name" == "terraform-backend" ]]; then
+	selected=/home/antoine/Documents/Alfred/devops/terraform-backend/
+elif [[ "$name" == "ai-infrastructure" ]]; then
+	selected=/home/antoine/Documents/Alfred/devops/ai-infrastructure/
 else
     exit 0
 fi

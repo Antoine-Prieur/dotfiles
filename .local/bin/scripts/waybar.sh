@@ -1,5 +1,3 @@
 #!/bin/bash
 
-killall waybar
-sleep 0.2
-waybar
+killall -SIGUSR1 waybar
