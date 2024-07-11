@@ -11,6 +11,7 @@ return {
         yaml = { 'prettier' },
         markdown = { 'prettier' },
         lua = { 'stylua' },
+        terraform = { 'terraformls' },
       },
       format_on_save = {
         lsp_fallback = true,

@@ -38,6 +38,8 @@ local on_attach = function(_, bufnr)
     mypy = {},
     isort = {},
     rust_analyzer = {},
+    terraformls = {},
+    tflint = {},
     -- tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 

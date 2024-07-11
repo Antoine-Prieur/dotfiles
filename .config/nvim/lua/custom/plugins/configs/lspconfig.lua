@@ -70,7 +70,7 @@ lspconfig.pyright.setup {
     python = {
       analysis = {
         autoSearchPaths = true,
-        --diagnosticMode = 'workspace',
+        diagnosticMode = 'openFilesOnly',
         useLibraryCodeForTypes = true,
       },
     },
@@ -114,21 +114,37 @@ dap.configurations.python = {
       get_python_path(config.root_dir)
     end,
   },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Module',
+    module = 'src.cronjob',
+    pythonPath = function()
+      get_python_path(config.root_dir)
+    end,
+  },
 }
 
 -- RUST
-lspconfig.rust_analyzer.setup(
-  {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = {"rust"},
-    root_dir = util.root_pattern("Cargo.toml"),
-    settings = {
-      ["rust-analyzer"] = {
-        cargo = {
-          allFeatures = true,
-        }
-      }
-    }
-  }
-)
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'rust' },
+  root_dir = util.root_pattern 'Cargo.toml',
+  settings = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
+}
+
+-- Terraform
+lspconfig.tflint.setup {
+  on_attach = on_attach,
+}
+
+lspconfig.terraformls.setup {
+  on_attach = on_attach,
+}
