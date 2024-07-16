@@ -6,14 +6,17 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- UI
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 
   -- Mason
   'williamboman/mason.nvim',
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+  },
 
   {
     -- Add indentation guides even on blank lines
@@ -34,7 +37,6 @@ require('mason').setup()
 require('lsp_signature').setup()
 
 -- Plugins config
-require 'custom.plugins.configs.neogen'
 require 'custom.plugins.configs.telescope'
 require 'custom.plugins.configs.harpoon'
 require 'custom.plugins.configs.nvim-tree'
