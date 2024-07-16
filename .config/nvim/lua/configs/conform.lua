@@ -1,8 +1,11 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+    python = { "isort", "black" },
+    json = { "fixjson" },
+    yaml = { "prettier" },
+    markdown = { "prettier" },
+    terraform = { "terraformls" },
   },
 
   format_on_save = {
@@ -12,4 +15,14 @@ local options = {
   },
 }
 
-require("conform").setup(options)
+local conform = require "conform"
+
+vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+  conform.format {
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 10000,
+  }
+end, { desc = "Conform - format file or range (in visual mode)" })
+
+conform.setup(options)
