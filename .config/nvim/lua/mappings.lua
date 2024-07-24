@@ -1,11 +1,30 @@
 require "nvchad.mappings"
 
--- add yours here
+-- Delete keymap
+local nomap = vim.keymap.del
+
+nomap("n", "<tab>")
+nomap("n", "<S-tab>")
+nomap("n", "<C-h>")
+nomap("n", "<C-j>")
+nomap("n", "<C-k>")
+nomap("n", "<C-l>")
+nomap("n", "<leader>n")
 
 local map = vim.keymap.set
 
+-- navigation
+map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "window left" })
+map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { desc = "window right" })
+map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
+map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
+
+-- general
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+map("n", "<leader>nh", ":nohl<CR>", { desc = "[N]o [H]ighlight" })
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Escape terminal in terminal mode", nowait = true, silent = true })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- resize windows
@@ -27,3 +46,7 @@ map("n", "<leader>qN", "<Cmd>cprevious<CR>", { desc = "[Q]uickfix list previous"
 -- Git fugitive
 map("n", "<leader>gs", "<Cmd>Git<CR>", { desc = "fugitive: [G]it [S]tatus", nowait = true, silent = true })
 map("n", "<leader>gl", "<Cmd>0Gclog<CR>", { desc = "fugitive: [G]it [L]og of current file", nowait = true, silent = true })
+
+-- LSP
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]o to [D]eclaration" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to [d]efinition" })

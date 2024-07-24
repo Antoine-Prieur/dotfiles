@@ -4,6 +4,10 @@ return {
     lazy = false,
   },
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
@@ -46,6 +50,8 @@ return {
         "css",
         "python",
         "rust",
+        "scala",
+        "terraform",
       },
     },
   },
@@ -66,5 +72,14 @@ return {
   {
     "tpope/vim-fugitive",
     event = "VeryLazy",
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "configs.harpoon"
+    end,
   },
 }

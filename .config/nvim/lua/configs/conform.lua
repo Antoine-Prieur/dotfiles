@@ -5,7 +5,7 @@ local options = {
     json = { "fixjson" },
     yaml = { "prettier" },
     markdown = { "prettier" },
-    terraform = { "terraformls" },
+    terraform = { "terraform_fmt" },
   },
 
   format_on_save = {
@@ -24,5 +24,13 @@ vim.keymap.set({ "n", "v" }, "<leader>mp", function()
     timeout_ms = 10000,
   }
 end, { desc = "Conform - format file or range (in visual mode)" })
+
+local imports_scala_augroup = vim.api.nvim_create_augroup("importScala", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufWrite" }, {
+  group = imports_scala_augroup,
+  pattern = "*.scala",
+  command = "MetalsOrganizeImports",
+})
 
 conform.setup(options)
