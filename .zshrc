@@ -106,7 +106,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias f='cd $(find * -type d | fzf)'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /home/antoine/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
