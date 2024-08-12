@@ -41,6 +41,7 @@ lspconfig.pyright.setup {
     mypy.args = {
       "-m",
       "mypy",
+      "--strict",
       "--show-column-numbers",
       "--show-error-end",
       "--hide-error-codes",

@@ -82,4 +82,7 @@ return {
       require "configs.harpoon"
     end,
   },
+  {
+    "mfussenegger/nvim-dap",
+  },
 }
