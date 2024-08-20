@@ -18,8 +18,8 @@ local options = {
     preserve_window_proportions = true,
   },
   git = {
-    enable = false,
-    ignore = true,
+    enable = true,
+    ignore = false,
   },
   filesystem_watchers = {
     enable = true,
@@ -33,6 +33,10 @@ local options = {
     enable = true,
     show_on_dirs = true,
     show_on_open_dirs = false,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
   },
   renderer = {
     root_folder_label = false,
@@ -65,11 +69,11 @@ local options = {
           arrow_closed = "",
         },
         git = {
-          unstaged = "✗",
+          unstaged = "★",
           staged = "✓",
           unmerged = "",
           renamed = "➜",
-          untracked = "★",
+          untracked = "✗",
           deleted = "",
           ignored = "◌",
         },

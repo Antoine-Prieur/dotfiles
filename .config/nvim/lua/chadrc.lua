@@ -10,6 +10,15 @@ M.ui = {
     enabled = false,
   },
 
+  statusline = {
+    order = { "mode", "file", "git", "harpoon", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" },
+    modules = {
+      harpoon = function()
+        return "%#BruhHl#" .. " bruh "
+      end,
+    },
+  },
+
   -- hl_override = {
   -- 	Comment = { italic = true },
   -- 	["@comment"] = { italic = true },
