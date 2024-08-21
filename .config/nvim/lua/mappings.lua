@@ -10,6 +10,7 @@ nomap("n", "<C-j>")
 nomap("n", "<C-k>")
 nomap("n", "<C-l>")
 nomap("n", "<leader>n")
+nomap("n", "<leader>x")
 
 local map = vim.keymap.set
 
