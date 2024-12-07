@@ -51,3 +51,8 @@ map("n", "<leader>gl", "<Cmd>0Gclog<CR>", { desc = "fugitive: [G]it [L]og of cur
 -- LSP
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]o to [D]eclaration" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to [d]efinition" })
+
+-- Claude integration
+vim.keymap.set("n", "<leader>k", ":AskClaude<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>k", ":<C-u>AskClaudeVisual<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fk", ":ClaudeHistory<CR>", { noremap = true, silent = true })
