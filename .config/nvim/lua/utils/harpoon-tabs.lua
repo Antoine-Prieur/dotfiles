@@ -1,3 +1,4 @@
+-- Waiting for length fix
 local harpoonTabs = {}
 
 -- define visual settings for harpoon tabline
@@ -11,10 +12,14 @@ local harpoon = require "harpoon"
 
 function harpoonTabs.harpoonFiles()
   local contents = {}
-  local marks_length = harpoon:list():length()
+  local harpoon_list = harpoon:list()
+  local marks_length = harpoon_list:length()
   local current_file_path = vim.fn.fnamemodify(vim.fn.expand "%:p", ":.")
+
+  print(marks_length)
+
   for index = 1, marks_length do
-    local harpoon_file_path = harpoon:list():get(index).value
+    local harpoon_file_path = harpoon_list:get(index).value
 
     local label = ""
     if vim.startswith(harpoon_file_path, "oil") then
@@ -33,7 +38,7 @@ function harpoonTabs.harpoonFiles()
     end
   end
 
-  return table.concat(contents)
+  return table.concat(contents) .. "%#HarpoonActive# ⇌% "
 end
 
 -- require("lualine").setup {
