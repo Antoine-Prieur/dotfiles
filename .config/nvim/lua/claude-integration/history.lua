@@ -7,7 +7,6 @@ vim.fn.mkdir(log_dir, "p")
 function M.log_api_call(prompt, response)
   local timestamp = os.date "%Y%m%d_%H%M%S"
   local filename = string.format("%s/api_call_%s.json", log_dir, timestamp)
-  print(filename)
 
   local log_entry = {
     timestamp = timestamp,

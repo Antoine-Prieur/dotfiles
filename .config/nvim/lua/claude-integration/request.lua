@@ -58,7 +58,10 @@ M.make_request = function(prompt, api_key)
       loading.timer:close()
       if #output > 0 then
         local response = table.concat(output)
+        print(response)
         local content = parse_claude_response(response)
+
+        print(content)
         require("claude-integration.history").log_api_call(prompt, content)
         vim.api.nvim_buf_set_lines(loading.buf, 0, -1, false, vim.split(content, "\n"))
       else
@@ -78,13 +81,16 @@ M.make_request_visual = function(prefix, api_key)
   end
 
   lines[1] = string.sub(lines[1], s_start[3], -1)
-  if s_end[2] - s_start[2] == 0 then
+  if #lines > 1 then
     lines[#lines] = string.sub(lines[#lines], 1, s_end[3])
+  else
+    lines[1] = string.sub(lines[1], 1, s_end[3])
   end
 
   local selected_text = table.concat(lines, "\n")
   local text = prefix and (prefix .. "\n\n" .. selected_text) or selected_text
-  local escaped_text = text:gsub('"', '\\"'):gsub("\n", "\\n")
+  -- Fix JSON escaping
+  local escaped_text = text:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n")
   M.make_request(escaped_text, api_key)
 end
 
