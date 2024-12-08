@@ -16,6 +16,9 @@ local function parse_claude_response(json_str)
 end
 
 local function get_curl_command(prompt, api_key)
+  -- Fix JSON escaping
+  local escaped_text = prompt:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n"):gsub("'", "'\\''")
+
   local curl_cmd = string.format(
     [[
         curl -X POST https://api.anthropic.com/v1/messages \
@@ -35,7 +38,7 @@ local function get_curl_command(prompt, api_key)
 			"system": "Provide concise responses while maintaining accuracy and helpfulness."
         }']],
     api_key,
-    prompt
+    escaped_text
   )
 
   return curl_cmd
@@ -58,10 +61,8 @@ M.make_request = function(prompt, api_key)
       loading.timer:close()
       if #output > 0 then
         local response = table.concat(output)
-        print(response)
         local content = parse_claude_response(response)
 
-        print(content)
         require("claude-integration.history").log_api_call(prompt, content)
         vim.api.nvim_buf_set_lines(loading.buf, 0, -1, false, vim.split(content, "\n"))
       else
@@ -89,9 +90,7 @@ M.make_request_visual = function(prefix, api_key)
 
   local selected_text = table.concat(lines, "\n")
   local text = prefix and (prefix .. "\n\n" .. selected_text) or selected_text
-  -- Fix JSON escaping
-  local escaped_text = text:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("\n", "\\n")
-  M.make_request(escaped_text, api_key)
+  M.make_request(text, api_key)
 end
 
 return M
