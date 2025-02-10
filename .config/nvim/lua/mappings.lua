@@ -53,7 +53,6 @@ vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]o to [D]eclarati
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to [d]efinition" })
 
 -- Claude integration
-vim.keymap.set("n", "<leader>ar", ":AvanteClear memory<CR>:AvanteClear history<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>k", ":AskAIAssistant<CR>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<leader>k", ":<C-u>AskAIAssistantVisual<CR>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>fk", ":AIAssistantHistory<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>k", ":AskAIAssistant<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>k", ":<C-u>AskAIAssistantVisual<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fk", ":AIAssistantHistory<CR>", { noremap = true, silent = true })
