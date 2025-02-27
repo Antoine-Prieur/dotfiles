@@ -1,5 +1,8 @@
 require "nvchad.options"
 
+-- shell
+vim.opt.shell = "/bin/zsh"
+
 -- local o = vim.o
 vim.o.hlsearch = false
 vim.opt.hlsearch = true
@@ -10,7 +13,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Indentations
 vim.opt.autowriteall = true
@@ -21,7 +24,7 @@ vim.opt.expandtab = false
 vim.opt.smartindent = true
 
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = 'unnamedplus'
+vim.o.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -34,7 +37,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- Decrease update time
 vim.o.updatetime = 50
@@ -42,32 +45,32 @@ vim.o.timeoutlen = 300
 
 -- Scroll
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = 'yes'
-vim.opt.isfname:append '@-@'
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append "@-@"
 
 -- Set width limit
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
   group = highlight_group,
-  pattern = '*',
+  pattern = "*",
 })
 
 -- vim filetype
 vim.filetype.add {
   extension = {
-    tf = 'terraform',
-    tfstate = 'json',
+    tf = "terraform",
+    tfstate = "json",
   },
 }

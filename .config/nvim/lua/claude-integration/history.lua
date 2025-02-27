@@ -109,7 +109,7 @@ function M.setup_telescope()
       :find()
   end
 
-  vim.api.nvim_create_user_command("ClaudeHistory", api_history, {})
+  vim.api.nvim_create_user_command("AIAssistantHistory", api_history, {})
 end
 
 return M

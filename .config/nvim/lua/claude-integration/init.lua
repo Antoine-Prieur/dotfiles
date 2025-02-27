@@ -17,11 +17,11 @@ M.make_request_input_visual = function()
 end
 
 -- Create custom commands
-vim.api.nvim_create_user_command("AskClaude", function()
+vim.api.nvim_create_user_command("AskAIAssistant", function()
   require("claude-integration").make_request_input()
 end, {})
 
-vim.api.nvim_create_user_command("AskClaudeVisual", function()
+vim.api.nvim_create_user_command("AskAIAssistantVisual", function()
   require("claude-integration").make_request_input_visual()
 end, {})
 

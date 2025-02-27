@@ -29,7 +29,7 @@ require("lazy").setup({
 }, lazy_config)
 
 -- load custom code
--- require "claude-integration"
+require "claude-integration"
 
 -- wip
 -- vim.opt.runtimepath:append "/home/antoine/Documents/Antoine/projects/nvim-ai-assistant"

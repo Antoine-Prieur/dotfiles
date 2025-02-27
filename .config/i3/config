@@ -172,7 +172,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-bindsym $mod+q exec --no-startup-id kitty
+bindsym $mod+q exec --no-startup-id kitty -e zsh
 
 # kill focused window
 bindsym $mod+c kill
@@ -362,7 +362,7 @@ for_window [class=TelegramDesktop] focus
 # For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
 # install picom package (yay -S picom)
 # start using default config 
-#exec_always --no-startup-id picom -b
+# exec_always --no-startup-id picom -b
 #
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf

@@ -37,6 +37,7 @@ local options = {
   diagnostics = {
     enable = true,
     show_on_dirs = true,
+    show_on_open_dirs = false,
   },
   renderer = {
     root_folder_label = false,

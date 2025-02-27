@@ -3,4 +3,5 @@
 !.config/waybar/
 !.config/tmux/
 !.config/rofi/
+!.config/i3/
 .local/*

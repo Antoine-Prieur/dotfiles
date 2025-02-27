@@ -21,7 +21,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -32,7 +31,7 @@ return {
         "css-lsp",
         "prettier",
         "black",
-        "isort",
+        "ruff-lsp",
         "fixjson",
         "terraform-ls",
       },
