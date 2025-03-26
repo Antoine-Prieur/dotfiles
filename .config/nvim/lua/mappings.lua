@@ -9,8 +9,11 @@ nomap("n", "<C-h>")
 nomap("n", "<C-j>")
 nomap("n", "<C-k>")
 nomap("n", "<C-l>")
+nomap("n", "<C-n>")
 nomap("n", "<leader>n")
 nomap("n", "<leader>x")
+nomap("n", "<leader>ff")
+nomap("n", "<leader>fw")
 
 local map = vim.keymap.set
 
@@ -21,7 +24,6 @@ map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
 map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
 
 -- general
-
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "<leader>nh", ":nohl<CR>", { desc = "[N]o [H]ighlight" })
@@ -46,7 +48,7 @@ map("n", "<leader>qN", "<Cmd>cprevious<CR>", { desc = "[Q]uickfix list previous"
 
 -- Git fugitive
 map("n", "<leader>gs", "<Cmd>Git<CR>", { desc = "fugitive: [G]it [S]tatus", nowait = true, silent = true })
-map("n", "<leader>gl", "<Cmd>0Gclog<CR>", { desc = "fugitive: [G]it [L]og of current file", nowait = true, silent = true })
+-- map("n", "<leader>gl", "<Cmd>0Gclog<CR>", { desc = "fugitive: [G]it [L]og of current file", nowait = true, silent = true })
 
 -- LSP
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]o to [D]eclaration" })
@@ -56,3 +58,60 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to [d]efinition
 vim.keymap.set("n", "<leader>k", ":AskAIAssistant<CR>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>k", ":<C-u>AskAIAssistantVisual<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fk", ":AIAssistantHistory<CR>", { noremap = true, silent = true })
+
+-- Picker
+vim.keymap.set("n", "<leader>ff", function()
+  Snacks.picker.smart()
+end, { noremap = true, silent = true, desc = "Smart find file" })
+
+vim.keymap.set("n", "<leader>fa", function()
+  Snacks.picker.files()
+end, { noremap = true, silent = true, desc = "Find file" })
+
+vim.keymap.set("n", "<leader>fr", function()
+  Snacks.picker.recent()
+end, { noremap = true, silent = true, desc = "Find file" })
+
+vim.keymap.set("n", "<leader>fb", function()
+  Snacks.picker.buffers()
+end, { noremap = true, silent = true, desc = "Find buffers" })
+
+vim.keymap.set("n", "<leader>fw", function()
+  Snacks.picker.grep()
+end, { noremap = true, silent = true, desc = "Grep" })
+
+vim.keymap.set("n", "<C-n>", function()
+  Snacks.explorer()
+end, { noremap = true, silent = true, desc = "Explorer" })
+
+-- Picker git
+vim.keymap.set("n", "<leader>fgb", function()
+  Snacks.picker.git_branches()
+end, { noremap = true, silent = true, desc = "Git branches" })
+
+vim.keymap.set("n", "<leader>fgl", function()
+  Snacks.picker.git_log()
+end, { noremap = true, silent = true, desc = "Git log" })
+
+vim.keymap.set("n", "<leader>fgL", function()
+  Snacks.picker.git_log_line()
+end, { noremap = true, silent = true, desc = "Git branches line" })
+
+vim.keymap.set("n", "<leader>fgs", function()
+  Snacks.picker.git_status()
+end, { noremap = true, silent = true, desc = "Git status" })
+
+vim.keymap.set("n", "<leader>fgd", function()
+  Snacks.picker.git_diff()
+end, { noremap = true, silent = true, desc = "Git diff" })
+
+vim.keymap.set("n", "<leader>fgf", function()
+  Snacks.picker.git_log_file()
+end, { noremap = true, silent = true, desc = "Git log file" })
+
+-- Picker diagnostics
+vim.keymap.set("n", "<leader>fd", function()
+  Snacks.picker.diagnostics()
+end, { noremap = true, silent = true, desc = "Diagnostics" })
+
+-- Misc

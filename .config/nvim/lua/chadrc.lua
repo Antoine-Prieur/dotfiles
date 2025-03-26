@@ -10,7 +10,6 @@ M.ui = {
   tabufline = {
     enabled = false,
   },
-
   -- statusline = {
   --   -- order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "harpoon", "diagnostics", "lsp", "cwd", "cursor" },
   --   order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "harpoon" },
