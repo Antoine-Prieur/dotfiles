@@ -25,15 +25,37 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- Lua
         "lua-language-server",
         "stylua",
+
+        -- Web Development
         "html-lsp",
         "css-lsp",
         "prettier",
+
+        -- JavaScript/TypeScript
+        "typescript-language-server",
+        "eslint-lsp",
+        "js-debug-adapter",
+
+        -- Python
         "black",
         "ruff-lsp",
+
+        -- JSON
         "fixjson",
+        "json-lsp",
+
+        -- Terraform
         "terraform-ls",
+        "tflint",
+
+        -- Java
+        "jdtls",
+        "java-debug-adapter",
+        "java-test",
+        "google-java-format",
       },
     },
   },
@@ -51,6 +73,7 @@ return {
         "rust",
         "scala",
         "terraform",
+        "java",
       },
     },
   },

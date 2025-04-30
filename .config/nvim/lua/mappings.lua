@@ -9,7 +9,6 @@ nomap("n", "<C-h>")
 nomap("n", "<C-j>")
 nomap("n", "<C-k>")
 nomap("n", "<C-l>")
-nomap("n", "<C-n>")
 nomap("n", "<leader>n")
 nomap("n", "<leader>x")
 nomap("n", "<leader>ff")
@@ -79,10 +78,6 @@ end, { noremap = true, silent = true, desc = "Find buffers" })
 vim.keymap.set("n", "<leader>fw", function()
   Snacks.picker.grep()
 end, { noremap = true, silent = true, desc = "Grep" })
-
-vim.keymap.set("n", "<C-n>", function()
-  Snacks.explorer()
-end, { noremap = true, silent = true, desc = "Explorer" })
 
 -- Picker git
 vim.keymap.set("n", "<leader>fgb", function()

@@ -12,7 +12,7 @@ local options = {
     update_root = false,
   },
   view = {
-    adaptive_size = false,
+    adaptive_size = true,
     side = "left",
     width = 30,
     preserve_window_proportions = true,
@@ -40,6 +40,7 @@ local options = {
     show_on_open_dirs = false,
   },
   renderer = {
+    group_empty = true,
     root_folder_label = false,
     highlight_git = false,
     highlight_opened_files = "name",

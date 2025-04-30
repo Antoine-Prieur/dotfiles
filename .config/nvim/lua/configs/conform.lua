@@ -6,10 +6,16 @@ local options = {
     yaml = { "prettier" },
     markdown = { "prettier" },
     terraform = { "terraform_fmt" },
+    java = { "google-java-format" },
+  },
+
+  formatters = {
+    ["google-java-format"] = {
+      prepend_args = { "--aosp" },
+    },
   },
 
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },

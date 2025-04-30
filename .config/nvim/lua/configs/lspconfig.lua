@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "terraformls", "tflint", "jsonls" }
+local servers = { "html", "cssls", "terraformls", "tflint", "jsonls", "jdtls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -92,3 +92,81 @@ lspconfig.tflint.setup {
 lspconfig.terraformls.setup {
   on_attach = on_attach,
 }
+
+-- TS / JS
+
+-- JavaScript/TypeScript specific configuration
+lspconfig.tsserver.setup {
+  on_attach = function(client, bufnr)
+    -- Call the common on_attach function
+    on_attach(client, bufnr)
+
+    -- Disable formatting if you're using prettier or other formatters
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
+  capabilities = capabilities,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "all",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+}
+
+-- ESLint configuration
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  settings = {
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = "separateLine",
+      },
+      showDocumentation = {
+        enable = true,
+      },
+    },
+    codeActionOnSave = {
+      enable = true,
+      mode = "all",
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    packageManager = "npm",
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = false,
+    validate = "on",
+    workingDirectory = {
+      mode = "location",
+    },
+  },
+}
+
+-- Java
+require("java").setup()
+require("lspconfig").jdtls.setup {}
