@@ -7,6 +7,7 @@ local options = {
     markdown = { "prettier" },
     terraform = { "terraform_fmt" },
     java = { "google-java-format" },
+    rust = { "rustfmt", lsp_format = "fallback" },
   },
 
   formatters = {
@@ -16,7 +17,7 @@ local options = {
   },
 
   format_on_save = {
-    timeout_ms = 500,
+    timeout_ms = 2000,
     lsp_fallback = true,
   },
 }

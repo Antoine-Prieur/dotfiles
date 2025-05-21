@@ -1,6 +1,3 @@
-local dap = require "dap"
-local pythonUtils = require "utils.python"
-
 dap.adapters.python = function(cb, config)
   if config.request == "attach" then
     ---@diagnostic disable-next-line: undefined-field

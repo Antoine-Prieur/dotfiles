@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "terraformls", "tflint", "jsonls", "jdtls" }
+local servers = { "html", "cssls", "terraformls", "tflint", "jsonls", "jdtls", "rust_analyzer" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -170,3 +170,42 @@ lspconfig.eslint.setup {
 -- Java
 require("java").setup()
 require("lspconfig").jdtls.setup {}
+
+-- rust
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importGranularity = "module",
+        importPrefix = "self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+        allFeatures = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+      checkOnSave = {
+        command = "clippy",
+      },
+      inlayHints = {
+        lifetimeElisionHints = {
+          enable = true,
+          useParameterNames = true,
+        },
+        reborrowHints = {
+          enable = true,
+        },
+        chainingHints = {
+          enable = true,
+        },
+        closureReturnTypeHints = {
+          enable = true,
+        },
+      },
+    },
+  },
+}

@@ -49,7 +49,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append "@-@"
 
 -- Set width limit
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"

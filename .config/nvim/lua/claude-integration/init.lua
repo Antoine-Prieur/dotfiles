@@ -1,6 +1,6 @@
 local M = {}
 
-local api_key = vim.fn.readfile(vim.fn.expand "~/.config/nvim/local/anthropic.txt")[1]
+local api_key = vim.env.ANTHROPIC_API_KEY
 
 M.make_request_input = function()
   local prompt = vim.fn.input "Enter prompt: "

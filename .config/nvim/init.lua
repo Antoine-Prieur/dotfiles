@@ -31,14 +31,7 @@ require("lazy").setup({
 -- load custom code
 require "claude-integration"
 
--- wip
--- vim.opt.runtimepath:append "/home/antoine/Documents/Antoine/projects/nvim-ai-assistant"
-
--- local api_key = vim.fn.readfile(vim.fn.expand "~/.config/nvim/local/anthropic.txt")[1]
--- require("ai_assistant").setup {
---  api_key = api_key,
---model = "claude-3-5-sonnet-20241022",
---}
+vim.fn.system "export ANTHROPIC_API_KEY=$(pass dev/anthropic/api-key)"
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
