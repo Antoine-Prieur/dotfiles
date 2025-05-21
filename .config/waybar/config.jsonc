@@ -12,8 +12,6 @@
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "tray",
-        "custom/updates",
-        "custom/language",
         "battery",
         "pulseaudio",
     ],
