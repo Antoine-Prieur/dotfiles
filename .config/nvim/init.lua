@@ -31,8 +31,6 @@ require("lazy").setup({
 -- load custom code
 require "claude-integration"
 
-vim.fn.system "export ANTHROPIC_API_KEY=$(pass dev/anthropic/api-key)"
-
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
