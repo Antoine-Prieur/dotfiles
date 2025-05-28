@@ -17,6 +17,9 @@ setopt appendhistory
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Load direnv
+eval "$(direnv hook zsh)"
+
 # Git support (simple alternative to oh-my-zsh git plugin)
 autoload -Uz vcs_info
 precmd() { vcs_info }
