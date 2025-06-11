@@ -402,7 +402,7 @@ exec --no-startup-id xrandr --output HDMI-0 --auto --right-of DP-0
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /home/antoine/.config/hypr/wallpapers/default.jpg
+exec --no-startup-id sleep 1 && feh --bg-fill ~/dotfiles/.config/hypr/wallpapers/default.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
