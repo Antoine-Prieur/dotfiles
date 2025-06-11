@@ -96,7 +96,7 @@ lspconfig.terraformls.setup {
 -- TS / JS
 
 -- JavaScript/TypeScript specific configuration
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = function(client, bufnr)
     -- Call the common on_attach function
     on_attach(client, bufnr)
@@ -168,7 +168,6 @@ lspconfig.eslint.setup {
 }
 
 -- Java
-require("java").setup()
 require("lspconfig").jdtls.setup {}
 
 -- rust
