@@ -47,6 +47,14 @@ map("n", "<leader>qN", "<Cmd>cprevious<CR>", { desc = "[Q]uickfix list previous"
 
 -- Git fugitive
 map("n", "<leader>gs", "<Cmd>Git<CR>", { desc = "fugitive: [G]it [S]tatus", nowait = true, silent = true })
+map("n", "<leader>gc", "<Cmd>Gvdiffsplit!<CR>", { desc = "fugitive: [G]it [C]onflict", nowait = true, silent = true })
+
+-- Conflict resolution
+map("n", "<leader>gl", "<Cmd>diffget //2<CR>", { desc = "fugitive: [G]et [L]eft (HEAD/current)", nowait = true, silent = true })
+map("n", "<leader>gr", "<Cmd>diffget //3<CR>", { desc = "fugitive: [G]et [R]ight (incoming)", nowait = true, silent = true })
+map("n", "<leader>gn", "]c", { desc = "fugitive: [G]o to [N]ext conflict", nowait = true, silent = true })
+map("n", "<leader>gp", "[c", { desc = "fugitive: [G]o to [P]revious conflict", nowait = true, silent = true })
+map("n", "<leader>gw", "<Cmd>Gwrite<CR>", { desc = "fugitive: [G]it [W]rite (stage resolved)", nowait = true, silent = true })
 -- map("n", "<leader>gl", "<Cmd>0Gclog<CR>", { desc = "fugitive: [G]it [L]og of current file", nowait = true, silent = true })
 
 -- LSP
