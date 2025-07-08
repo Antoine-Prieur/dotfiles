@@ -142,6 +142,13 @@ bindcode $mod+Shift+80 	 move container to workspace  $ws8
 bindcode $mod+Shift+81 	 move container to workspace  $ws9
 bindcode $mod+Shift+90 	 move container to workspace  $ws10
 
+
+# Resize
+bindsym $mod+Mod1+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+l resize grow width 10 px or 10 ppt
+bindsym $mod+Mod1+j resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+k resize shrink height 10 px or 10 ppt
+
 # resize window (you can also use the mouse for that):
 #mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
@@ -314,22 +321,16 @@ set $ws10 "10"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-workspace $ws1 output DP-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output eDP-1-2
-workspace $ws6 output eDP-1-2
-workspace $ws7 output eDP-1-2
-workspace $ws8 output DP-0
-workspace $ws9 output DP-0
+# workspace $ws1 output DP-0
+# workspace $ws2 output HDMI-0
+# workspace $ws3 output HDMI-0
+# workspace $ws4 output HDMI-0
+# workspace $ws5 output eDP-1-2
+# workspace $ws6 output eDP-1-2
+# workspace $ws7 output eDP-1-2
+# workspace $ws8 output DP-0
+# workspace $ws9 output DP-0
 
-# bind program to workspace and focus to them on startup:
-assign [class="Xfce4-terminal"] $ws1
-assign [class="(?i)firefox"] $ws2
-assign [class="Thunar"] $ws3
-assign [class="thunderbird"] $ws4
-assign [class="TelegramDesktop"] $ws5
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Xfce4-terminal] focus
@@ -365,7 +366,7 @@ for_window [class=TelegramDesktop] focus
 # exec_always --no-startup-id picom -b
 #
 # for custom config:
-exec_always --no-startup-id picom --config  ~/dotfiles/.config/picom/picom.conf
+# exec_always --no-startup-id picom --config  ~/dotfiles/.config/picom/picom.conf
 
 #############################################
 # autostart applications/services on login: #
@@ -396,8 +397,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-exec --no-startup-id xrandr --output eDP-1-2 --auto --left-of DP-0
-exec --no-startup-id xrandr --output HDMI-0 --auto --right-of DP-0
+exec --no-startup-id xrandr --output eDP-1-2 --auto --right-of DP-0
+exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-0
 
 
 # set wallpaper

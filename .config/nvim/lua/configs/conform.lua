@@ -8,6 +8,10 @@ local options = {
     terraform = { "terraform_fmt" },
     java = { "google-java-format" },
     rust = { "rustfmt", lsp_format = "fallback" },
+    typescript = { "prettier" },
+    javascript = { "prettier" },
+    typescriptreact = { "prettier" },
+    javascriptreact = { "prettier" },
   },
 
   formatters = {
