@@ -106,5 +106,6 @@ alias f='cd $(find * -type d | fzf)'
 export PATH="/home/antoine/.local/bin:$PATH"
 export PATH="/home/antoine/.config/tofi/scripts:$PATH"
 export PATH="/usr/local/spark_3.3.2/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
 
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
