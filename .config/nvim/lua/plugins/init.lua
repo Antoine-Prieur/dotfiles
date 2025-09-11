@@ -56,6 +56,9 @@ return {
         "java-debug-adapter",
         "java-test",
         "google-java-format",
+
+        -- Go
+        "gopls",
       },
     },
   },
@@ -74,6 +77,7 @@ return {
         "scala",
         "terraform",
         "java",
+        "go",
       },
     },
   },

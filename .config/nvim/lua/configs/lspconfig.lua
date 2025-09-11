@@ -1,10 +1,9 @@
--- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "terraformls", "tflint", "jsonls", "jdtls", "rust_analyzer" }
+local servers = { "html", "cssls", "terraformls", "tflint", "jsonls", "jdtls", "rust_analyzer", "gopls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -205,6 +204,51 @@ lspconfig.rust_analyzer.setup {
           enable = true,
         },
       },
+    },
+  },
+}
+
+-- Go
+local util = require "lspconfig.util"
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern "go.mod",
+  settings = {
+    gopls = {
+      -- Quality of life
+      completeUnimported = true,
+      usePlaceholders = true,
+      staticcheck = true, -- extra analysis via staticcheck
+      gofumpt = true, -- stricter formatting style
+
+      -- Analyses
+      analyses = {
+        unusedparams = true,
+        unreachable = true,
+        nilness = true,
+        shadow = true,
+        unusedwrite = true,
+        useany = true,
+      },
+
+      -- Inlay hints (shown via LSP inlay hints)
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+
+      -- Avoid scanning noisy dirs
+      directoryFilters = { "-.git", "-node_modules", "-.direnv" },
     },
   },
 }
