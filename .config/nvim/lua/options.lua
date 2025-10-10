@@ -74,3 +74,6 @@ vim.filetype.add {
     tfstate = "json",
   },
 }
+
+-- Remove command line space (Noice was handling this before)
+vim.opt.cmdheight = 0

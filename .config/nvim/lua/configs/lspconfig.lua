@@ -35,8 +35,6 @@ lspconfig.ruff.setup {
     config_arg.settings = config_arg.settings or {}
     config_arg.settings.python = config_arg.settings.python or {}
     config_arg.settings.python.pythonPath = pythonPath
-
-    -- If you're still using mypy separately
   end,
   settings = {
     -- Ruff-specific settings
@@ -76,7 +74,7 @@ lspconfig.pyright.setup {
       analysis = {
         typeCheckingMode = "strict",
         autoSearchPaths = true,
-        diagnosticMode = "workspace",
+        diagnosticMode = "openFilesOnly",
         useLibraryCodeForTypes = true,
       },
     },
@@ -167,7 +165,7 @@ lspconfig.eslint.setup {
 }
 
 -- Java
-require("lspconfig").jdtls.setup {}
+lspconfig.jdtls.setup {}
 
 -- rust
 lspconfig.rust_analyzer.setup {
@@ -217,14 +215,15 @@ lspconfig.gopls.setup {
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern "go.mod",
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
-      -- Quality of life
+      expandWorkspaceToModule = false,
+
       completeUnimported = true,
       usePlaceholders = true,
-      staticcheck = true, -- extra analysis via staticcheck
-      gofumpt = true, -- stricter formatting style
+      semanticTokens = false,
+      diagnosticsTrigger = "Save",
 
       -- Analyses
       analyses = {
@@ -248,7 +247,11 @@ lspconfig.gopls.setup {
       },
 
       -- Avoid scanning noisy dirs
-      directoryFilters = { "-.git", "-node_modules", "-.direnv" },
+      directoryFilters = {
+        "-",
+        "+domains/ai_platform",
+        "+libs/go",
+      },
     },
   },
 }

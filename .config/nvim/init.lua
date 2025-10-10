@@ -28,8 +28,8 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
--- load custom code
-require "claude-integration"
+-- -- load custom code
+-- require "claude-integration"
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")

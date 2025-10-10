@@ -6,6 +6,11 @@ local path = util.path
 -- Utils --
 
 function pythonUtils.getPythonPath(workspace)
+  -- Use activated virtualenv.
+  if vim.env.VIRTUAL_ENV then
+    return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+  end
+
   -- Find and use virtualenv via poetry in workspace directory.
   local match = vim.fn.glob(path.join(workspace, "poetry.lock"))
   if match ~= "" then
@@ -13,14 +18,9 @@ function pythonUtils.getPythonPath(workspace)
     return path.join(venv, "bin", "python")
   end
 
-  -- Use activated virtualenv.
-  if vim.env.VIRTUAL_ENV then
-    return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
-  end
-
   -- Find and use virtualenv in workspace directory.
   for _, pattern in ipairs { "*", ".*" } do
-    local match = vim.fn.glob(path.join(workspace, pattern, "pyvenv.cfg"))
+    match = vim.fn.glob(path.join(workspace, pattern, "pyvenv.cfg"))
     if match ~= "" then
       return path.join(path.dirname(match), "bin", "python")
     end

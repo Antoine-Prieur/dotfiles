@@ -1,15 +1,19 @@
 return {
   {
     "folke/which-key.nvim",
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "christoomey/vim-tmux-navigator",
-    lazy = false,
+    keys = {
+      { "<C-h>", "<cmd>TmuxNavigateLeft<CR>", desc = "window left" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<CR>", desc = "window down" },
+      { "<C-k>", "<cmd>TmuxNavigateUp<CR>", desc = "window up" },
+      { "<C-l>", "<cmd>TmuxNavigateRight<CR>", desc = "window right" },
+    },
   },
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -40,7 +44,6 @@ return {
         "js-debug-adapter",
 
         -- Python
-        "black",
         "ruff-lsp",
 
         -- JSON
@@ -62,7 +65,6 @@ return {
       },
     },
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -93,31 +95,8 @@ return {
     },
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    },
-    opts = function()
-      return require "configs.noice"
-    end,
-    config = function(_, opts)
-      require("noice").setup(opts)
-    end,
-  },
-  {
     "tpope/vim-fugitive",
     event = "VeryLazy",
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require "configs.harpoon"
-    end,
   },
   {
     "mfussenegger/nvim-dap",

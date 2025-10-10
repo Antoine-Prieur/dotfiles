@@ -12,7 +12,7 @@ local options = {
     javascript = { "prettier" },
     typescriptreact = { "prettier" },
     javascriptreact = { "prettier" },
-    go = { "gofumpt" },
+    go = { "gofumpt", "goimports" },
   },
 
   formatters = {

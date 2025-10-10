@@ -8,11 +8,11 @@ local options = {
   hijack_unnamed_buffer_when_opening = false,
   sync_root_with_cwd = true,
   update_focused_file = {
-    enable = true,
+    enable = false,
     update_root = false,
   },
   view = {
-    adaptive_size = true,
+    adaptive_size = false,
     side = "left",
     width = 30,
     preserve_window_proportions = true,
