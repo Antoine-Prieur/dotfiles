@@ -100,5 +100,51 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+
+      -- Setup DAP UI
+      dapui.setup()
+
+      -- Setup virtual text
+      require("nvim-dap-virtual-text").setup()
+
+      -- Customize breakpoint signs
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      vim.fn.sign_define("DapStopped", { text = "→", texthl = "DapStopped", linehl = "DapStoppedLine", numhl = "" })
+      vim.fn.sign_define("DapLogPoint", { text = "◎", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+      -- Set highlight colors
+      vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#e51400" })
+      vim.api.nvim_set_hl(0, "DapStopped", { fg = "#00ff00" })
+      vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#2e2e2e" })
+      vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#61afef" })
+
+      -- Auto open/close UI
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+
+      -- Load language-specific configurations
+      require "configs.dap-py"
+      require "configs.dap-go"
+    end,
   },
 }

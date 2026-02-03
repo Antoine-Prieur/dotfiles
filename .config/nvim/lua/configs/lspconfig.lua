@@ -103,6 +103,8 @@ lspconfig.ts_ls.setup {
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
   capabilities = capabilities,
+  -- cmd = { "node", ".yarn/sdks/typescript/bin/tsserver" },
+  -- root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   settings = {
     typescript = {
@@ -213,7 +215,11 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = { "gopls" },
+  cmd = { "dd-gopls" },
+  cmd_env = {
+    GOPACKAGESDRIVER_BAZEL = "bzl",
+    GOPLS_DISABLE_MODULE_LOADS = "1",
+  },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -244,13 +250,6 @@ lspconfig.gopls.setup {
         functionTypeParameters = true,
         parameterNames = true,
         rangeVariableTypes = true,
-      },
-
-      -- Avoid scanning noisy dirs
-      directoryFilters = {
-        "-",
-        "+domains/ai_platform",
-        "+libs/go",
       },
     },
   },

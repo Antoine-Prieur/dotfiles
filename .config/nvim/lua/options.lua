@@ -3,6 +3,9 @@ require "nvchad.options"
 -- shell
 vim.opt.shell = "/bin/zsh"
 
+-- Allow local setup files
+vim.o.exrc = true
+
 -- local o = vim.o
 vim.o.hlsearch = false
 vim.opt.hlsearch = true
@@ -75,5 +78,4 @@ vim.filetype.add {
   },
 }
 
--- Remove command line space (Noice was handling this before)
 vim.opt.cmdheight = 0

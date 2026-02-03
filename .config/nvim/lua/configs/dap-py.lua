@@ -1,3 +1,5 @@
+local dap = require "dap"
+
 dap.adapters.python = function(cb, config)
   if config.request == "attach" then
     ---@diagnostic disable-next-line: undefined-field
@@ -15,7 +17,7 @@ dap.adapters.python = function(cb, config)
   else
     cb {
       type = "executable",
-      command = pythonUtils.getPythonPath(vim.fn.getcwd()),
+      command = "python",
       args = { "-m", "debugpy.adapter" },
       options = {
         source_filetype = "python",

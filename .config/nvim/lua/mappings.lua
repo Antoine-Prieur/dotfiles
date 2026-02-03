@@ -3,11 +3,63 @@ require "nvchad.mappings"
 -- Delete keymap
 local nomap = vim.keymap.del
 
+-- Only delete keymaps that NvChad actually defines
+nomap("n", "<C-n>")
 nomap("n", "<leader>n")
 nomap("n", "<leader>ff")
+nomap("n", "<leader>fa")
+nomap("n", "<leader>fb")
 nomap("n", "<leader>fw")
 
 local map = vim.keymap.set
+
+-- Snacks keymaps
+local snacks = require("snacks")
+map("n", "<C-n>", function()
+  snacks.explorer()
+end, { desc = "File Explorer" })
+map("n", "<leader><leader>", function()
+  snacks.picker.smart { filter = { cwd = true } }
+end, { desc = "Smart find file" })
+map("n", "<leader>ff", function()
+  snacks.picker.files()
+end, { desc = "Find file" })
+map("n", "<leader>fr", function()
+  snacks.picker.recent { filter = { cwd = true } }
+end, { desc = "Recent files" })
+map("n", "<leader>fb", function()
+  snacks.picker.buffers()
+end, { desc = "Find buffers" })
+map("n", "<leader>fw", function()
+  snacks.picker.grep()
+end, { desc = "Grep" })
+map("n", "<leader>fl", function()
+  snacks.picker.notifications()
+end, { desc = "List notifications" })
+map("n", "<leader>f;", function()
+  snacks.picker.commands()
+end, { desc = "Commands" })
+map("n", "<leader>fd", function()
+  snacks.picker.diagnostics()
+end, { desc = "Diagnostics" })
+map("n", "<leader>fgb", function()
+  snacks.picker.git_branches()
+end, { desc = "Git branches" })
+map("n", "<leader>fgl", function()
+  snacks.picker.git_log()
+end, { desc = "Git log" })
+map("n", "<leader>fgL", function()
+  snacks.picker.git_log_line()
+end, { desc = "Git log line" })
+map("n", "<leader>fgs", function()
+  snacks.picker.git_status()
+end, { desc = "Git status" })
+map("n", "<leader>fgd", function()
+  snacks.picker.git_diff()
+end, { desc = "Git diff" })
+map("n", "<leader>fgf", function()
+  snacks.picker.git_log_file()
+end, { desc = "Git log file" })
 
 -- general
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -50,65 +102,46 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]o to [d]efinition
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[G]o to [D]eclaration" })
 vim.keymap.set("n", "<leader>lr", "<Cmd>LspRestart<CR>", { desc = "[L]SP [R]estart" })
 
--- Notifications/Messages
-vim.keymap.set("n", "<leader>fl", function()
-  Snacks.picker.notifications()
-end, { noremap = true, silent = true, desc = "List notifications/messages" })
-
 -- Find current file
 vim.keymap.set("n", "<leader>fn", "<Cmd>NvimTreeFindFile<CR>", { desc = "Find File in Tree" })
 
--- Snacks
--- Picker command
-vim.keymap.set("n", "<leader>f;", function()
-  Snacks.picker.commands()
-end, { noremap = true, silent = true, desc = "Git commands" })
--- Picker git
-vim.keymap.set("n", "<leader>fgb", function()
-  Snacks.picker.git_branches()
-end, { noremap = true, silent = true, desc = "Git branches" })
+-- DAP (Debugger)
+vim.keymap.set("n", "<F5>", function()
+  require("dap").continue()
+end, { desc = "Debug: Start/Continue" })
 
-vim.keymap.set("n", "<leader>fgl", function()
-  Snacks.picker.git_log()
-end, { noremap = true, silent = true, desc = "Git log" })
+vim.keymap.set("n", "<F10>", function()
+  require("dap").step_over()
+end, { desc = "Debug: Step Over" })
 
-vim.keymap.set("n", "<leader>fgL", function()
-  Snacks.picker.git_log_line()
-end, { noremap = true, silent = true, desc = "Git branches line" })
+vim.keymap.set("n", "<F11>", function()
+  require("dap").step_into()
+end, { desc = "Debug: Step Into" })
 
-vim.keymap.set("n", "<leader>fgs", function()
-  Snacks.picker.git_status()
-end, { noremap = true, silent = true, desc = "Git status" })
+vim.keymap.set("n", "<F12>", function()
+  require("dap").step_out()
+end, { desc = "Debug: Step Out" })
 
-vim.keymap.set("n", "<leader>fgd", function()
-  Snacks.picker.git_diff()
-end, { noremap = true, silent = true, desc = "Git diff" })
+vim.keymap.set("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "[D]ebug: Toggle [B]reakpoint" })
 
-vim.keymap.set("n", "<leader>fgf", function()
-  Snacks.picker.git_log_file()
-end, { noremap = true, silent = true, desc = "Git log file" })
+vim.keymap.set("n", "<leader>dB", function()
+  require("dap").set_breakpoint(vim.fn.input "Breakpoint condition: ")
+end, { desc = "[D]ebug: Set Conditional [B]reakpoint" })
 
--- Picker diagnostics (unchanged)
-vim.keymap.set("n", "<leader>fd", function()
-  Snacks.picker.diagnostics()
-end, { noremap = true, silent = true, desc = "Diagnostics" })
+vim.keymap.set("n", "<leader>dr", function()
+  require("dap").repl.open()
+end, { desc = "[D]ebug: Open [R]EPL" })
 
-vim.keymap.set("n", "<leader>ff", function()
-  Snacks.picker.smart { filter = { cwd = true } }
-end, { noremap = true, silent = true, desc = "Smart find file" })
+vim.keymap.set("n", "<leader>dl", function()
+  require("dap").run_last()
+end, { desc = "[D]ebug: Run [L]ast" })
 
-vim.keymap.set("n", "<leader>fa", function()
-  Snacks.picker.files()
-end, { noremap = true, silent = true, desc = "Find file" })
+vim.keymap.set("n", "<leader>dt", function()
+  require("dap").terminate()
+end, { desc = "[D]ebug: [T]erminate" })
 
-vim.keymap.set("n", "<leader>fr", function()
-  Snacks.picker.recent { filter = { cwd = true } }
-end, { noremap = true, silent = true, desc = "Find file" })
-
-vim.keymap.set("n", "<leader>fb", function()
-  Snacks.picker.buffers()
-end, { noremap = true, silent = true, desc = "Find buffers" })
-
-vim.keymap.set("n", "<leader>fw", function()
-  Snacks.picker.grep()
-end, { noremap = true, silent = true, desc = "Grep" })
+vim.keymap.set("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "[D]ebug: Toggle [U]I" })

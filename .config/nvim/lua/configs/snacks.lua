@@ -54,7 +54,7 @@ end
 
 -- Recent in project
 local function recent_in_cwd()
-  Snacks.picker.recent { filter = { cwd = true } }
+  Snacks.picker.zoxide { filter = { cwd = true } }
 end
 
 -- Grep scoped to project root; add your own globs on the fly with " -- "
@@ -72,24 +72,25 @@ local function buffers()
 end
 
 -- --- Optional: module defaults (applies to all pickers)
-require("snacks").setup {
-  bigfile = { enabled = true }, -- avoid heavy features on huge files
-  picker = {
-    sources = {
-      files = {
-        fd_args = fd_args(true), -- global default for files source
-      },
-    },
-  },
-}
+-- This file is not used - keymaps are now in lua/plugins/snacks.lua
+-- require("snacks").setup {
+--   bigfile = { enabled = true }, -- avoid heavy features on huge files
+--   picker = {
+--     sources = {
+--       files = {
+--         fd_args = fd_args(true), -- global default for files source
+--       },
+--     },
+--   },
+-- }
 
 -- Picker
-vim.keymap.set("n", "<leader>ff", smart_files, { noremap = true, silent = true, desc = "Smart find file (git or pruned fd)" })
+-- vim.keymap.set("n", "<leader>ff", smart_files, { noremap = true, silent = true, desc = "Smart find file (git or pruned fd)" })
 
-vim.keymap.set("n", "<leader>fa", files_fs, { noremap = true, silent = true, desc = "Find file (pruned fd)" })
+-- vim.keymap.set("n", "<leader>fa", files_fs, { noremap = true, silent = true, desc = "Find file (pruned fd)" })
 
-vim.keymap.set("n", "<leader>fr", recent_in_cwd, { noremap = true, silent = true, desc = "Recent files (cwd)" })
+-- vim.keymap.set("n", "<leader>fr", recent_in_cwd, { noremap = true, silent = true, desc = "Recent files (cwd)" })
 
-vim.keymap.set("n", "<leader>fb", buffers, { noremap = true, silent = true, desc = "Find buffers" })
+-- vim.keymap.set("n", "<leader>fb", buffers, { noremap = true, silent = true, desc = "Find buffers" })
 
-vim.keymap.set("n", "<leader>fw", grep_cwd, { noremap = true, silent = true, desc = "Grep (cwd)" })
+-- vim.keymap.set("n", "<leader>fw", grep_cwd, { noremap = true, silent = true, desc = "Grep (cwd)" })

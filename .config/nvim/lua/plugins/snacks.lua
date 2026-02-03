@@ -7,18 +7,20 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     bigfile = { enabled = true },
+    lazygit = { enabled = true },
     dashboard = { enabled = false },
-    -- explorer = { enabled = true, hidden = true, git_ignored = true, respect_gitignore = false, allow_patterns = { ".*" } },
+    explorer = { enabled = true },
     image = { enabled = true },
     -- indent = { enabled = true },
     -- input = { enabled = true },
     notifier = {
       enabled = true,
+      style = "compact",
       timeout = 3000, -- default timeout in ms
       top_down = true, -- show notifications from top to bottom
       margin = { top = 1, right = 1, bottom = 0 }, -- position at top-right
-      width = { min = 40, max = 60 }, -- limit width to max 60 columns
-      height = { min = 1, max = 10 }, -- limit to max 10 lines per notification
+      width = { min = 40, max = 0.2 },
+      height = { min = 1, max = 0.6 },
     },
     picker = {
       enabled = true,
