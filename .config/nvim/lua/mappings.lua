@@ -67,6 +67,15 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>nh", ":nohl<CR>", { desc = "[N]o [H]ighlight" })
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Escape terminal in terminal mode", nowait = true, silent = true })
 
+-- Copy file reference
+map("n", "<leader>yr", function()
+  require("utils.copy-reference").copy_file_reference()
+end, { desc = "[Y]ank file [R]eference" })
+map("v", "<leader>yr", "<Esc><Cmd>lua require('utils.copy-reference').copy_file_reference_range()<CR>", { desc = "[Y]ank file [R]eference (range)" })
+map("n", "<leader>yp", function()
+  require("utils.copy-reference").show_file_path()
+end, { desc = "[Y]ank [P]ath (show)" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- resize windows
 map("n", "<C-A-h>", "<C-w><", { desc = "Decrease width", nowait = true, silent = true })
