@@ -11,7 +11,8 @@ M.ui = {
   },
   statusline = {
     theme = "default",
-    order = { "mode", "file", "git", "%=", "harpoon", "%=", "lsp_msg", "diagnostics", "lsp", "cwd", "cursor" },
+    -- order = { "mode", "git", "%=", "harpoon", "%=", "lsp_msg", "diagnostics", "lsp", "file", "cwd", "cursor" },
+    order = { "harpoon", "%=", "diagnostics", "cwd" },
     modules = {
       harpoon = function()
         return require("configs.statusline").harpoon()

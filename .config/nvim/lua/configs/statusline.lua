@@ -1,15 +1,23 @@
 local M = {}
 
 -- Set up highlight groups for Harpoon statusline
+-- Get the statusline background color
+local stl_bg = vim.api.nvim_get_hl(0, { name = "StatusLine" }).bg
+if stl_bg then
+  stl_bg = string.format("#%06x", stl_bg)
+else
+  stl_bg = "NONE"
+end
+
 vim.api.nvim_set_hl(0, "St_HarpoonActive", {
   fg = "#a6e3a1", -- green
-  bg = "#1e1e2e", -- dark background
+  bg = stl_bg,
   bold = true,
 })
 
 vim.api.nvim_set_hl(0, "St_HarpoonInactive", {
   fg = "#6c7086", -- grey
-  bg = "#1e1e2e", -- dark background
+  bg = stl_bg,
 })
 
 M.harpoon = function()
@@ -41,7 +49,11 @@ M.harpoon = function()
     end
   end
 
-  return table.concat(parts)
+  if #parts == 0 then
+    return ""
+  end
+
+  return " " .. table.concat(parts) .. " "
 end
 
 return M
