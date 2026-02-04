@@ -114,6 +114,60 @@ vim.keymap.set("n", "<leader>lr", "<Cmd>LspRestart<CR>", { desc = "[L]SP [R]esta
 -- Find current file
 vim.keymap.set("n", "<leader>fn", "<Cmd>NvimTreeFindFile<CR>", { desc = "Find File in Tree" })
 
+-- Harpoon
+local harpoon = require("harpoon")
+map("n", "<leader>a", function()
+  harpoon:list():add()
+end, { desc = "Harpoon - [A]dd file" })
+
+map("n", "<leader><tab>", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon - Open quick menu", nowait = true, silent = true })
+
+map("n", "<tab>", function()
+  harpoon:list():next()
+end, { desc = "Harpoon - Next file", nowait = true, silent = true })
+
+map("n", "<S-tab>", function()
+  harpoon:list():prev()
+end, { desc = "Harpoon - Previous file", nowait = true, silent = true })
+
+map("n", "<leader>1", function()
+  harpoon:list():select(1)
+end, { desc = "Harpoon - File 1", nowait = true, silent = true })
+
+map("n", "<leader>2", function()
+  harpoon:list():select(2)
+end, { desc = "Harpoon - File 2", nowait = true, silent = true })
+
+map("n", "<leader>3", function()
+  harpoon:list():select(3)
+end, { desc = "Harpoon - File 3", nowait = true, silent = true })
+
+map("n", "<leader>4", function()
+  harpoon:list():select(4)
+end, { desc = "Harpoon - File 4", nowait = true, silent = true })
+
+map("n", "<leader>5", function()
+  harpoon:list():select(5)
+end, { desc = "Harpoon - File 5", nowait = true, silent = true })
+
+map("n", "<leader>6", function()
+  harpoon:list():select(6)
+end, { desc = "Harpoon - File 6", nowait = true, silent = true })
+
+map("n", "<leader>7", function()
+  harpoon:list():select(7)
+end, { desc = "Harpoon - File 7", nowait = true, silent = true })
+
+map("n", "<leader>8", function()
+  harpoon:list():select(8)
+end, { desc = "Harpoon - File 8", nowait = true, silent = true })
+
+map("n", "<leader>9", function()
+  harpoon:list():select(9)
+end, { desc = "Harpoon - File 9", nowait = true, silent = true })
+
 -- DAP (Debugger)
 vim.keymap.set("n", "<F5>", function()
   require("dap").continue()

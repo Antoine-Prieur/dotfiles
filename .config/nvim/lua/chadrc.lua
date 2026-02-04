@@ -9,6 +9,19 @@ M.ui = {
   tabufline = {
     enabled = false,
   },
+  statusline = {
+    theme = "default",
+    order = { "mode", "file", "git", "%=", "harpoon", "%=", "lsp_msg", "diagnostics", "lsp", "cwd", "cursor" },
+    modules = {
+      harpoon = function()
+        return require("configs.statusline").harpoon()
+      end,
+    },
+  },
+  hl_override = {
+    St_HarpoonActive = { fg = "green", bg = "statusline_bg", bold = true, underline = true },
+    St_HarpoonInactive = { fg = "light_grey", bg = "statusline_bg" },
+  },
 }
 
 return M
