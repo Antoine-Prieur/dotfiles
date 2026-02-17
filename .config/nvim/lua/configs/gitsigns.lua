@@ -9,5 +9,4 @@ require("gitsigns").setup {
     use_focus = true,
   },
   signs_staged_enable = true,
-  _git_cmd = { "git", "--no-optional-locks" },
 }

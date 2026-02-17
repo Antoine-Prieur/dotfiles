@@ -13,11 +13,11 @@ nomap("n", "<leader>fw")
 
 local map = vim.keymap.set
 
+-- File Explorer
+map("n", "<C-n>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
+
 -- Snacks keymaps
 local snacks = require("snacks")
-map("n", "<C-n>", function()
-  snacks.explorer()
-end, { desc = "File Explorer" })
 map("n", "<leader><leader>", function()
   snacks.picker.smart { filter = { cwd = true } }
 end, { desc = "Smart find file" })

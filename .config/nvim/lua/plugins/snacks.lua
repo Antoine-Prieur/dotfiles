@@ -9,7 +9,7 @@ return {
     bigfile = { enabled = true },
     lazygit = { enabled = true },
     dashboard = { enabled = false },
-    explorer = { enabled = true },
+    explorer = { enabled = false },
     image = { enabled = true },
     -- indent = { enabled = true },
     -- input = { enabled = true },

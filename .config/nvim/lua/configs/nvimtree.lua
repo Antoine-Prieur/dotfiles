@@ -1,4 +1,20 @@
+local function on_attach(bufnr)
+  local api = require("nvim-tree.api")
+
+  -- Default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- Custom mappings
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+  vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+end
+
 local options = {
+  on_attach = on_attach,
   filters = {
     dotfiles = false,
   },
@@ -18,8 +34,7 @@ local options = {
     preserve_window_proportions = true,
   },
   git = {
-    enable = true,
-    ignore = false,
+    enable = false,
   },
   filesystem_watchers = {
     enable = true,
@@ -54,7 +69,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = true,
+        git = false,
       },
 
       glyphs = {
